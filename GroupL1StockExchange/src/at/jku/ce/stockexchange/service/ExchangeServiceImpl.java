@@ -44,7 +44,7 @@ public class ExchangeServiceImpl implements ExchangeService {
         	
         	//TODO implement my logic here
         	
-        	// TODO DB Zugriff hier
+        	// TODO DB Zugriff hier asdf
         	
             at.jku.ce.stockexchange.service.Exchange _return = new at.jku.ce.stockexchange.service.Exchange();
             _return.setExchangeDate(javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar("2014-01-21T21:27:43.810+01:00"));
