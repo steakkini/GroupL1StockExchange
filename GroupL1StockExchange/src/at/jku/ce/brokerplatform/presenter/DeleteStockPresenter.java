@@ -19,14 +19,14 @@ public class DeleteStockPresenter {
 	public void deleteStock()
 	{
 		String stockName = view.getStockName();
-		/*
+		
 		if(service.deleteStock(stockName)){
 			view.displaySuccess("Succesfully deleted.");
 		}
 		else{
 			view.displaySuccess("Problem occured.");
 		}
-		*/
+		
 	}
 
 }

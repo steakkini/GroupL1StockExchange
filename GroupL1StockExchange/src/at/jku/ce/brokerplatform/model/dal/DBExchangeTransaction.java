@@ -3,7 +3,6 @@ package at.jku.ce.brokerplatform.model.dal;
 import java.sql.*;
 import java.util.List;
 
-import at.jku.ce.brokerplatform.model.ExchangeDB;
 import at.jku.ce.stockexchange.service.Exchange;
 
 /**

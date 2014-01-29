@@ -1,4 +1,4 @@
-package at.jku.ce.brokerplatform.model;
+package at.jku.ce.brokerplatform.model.dal;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
