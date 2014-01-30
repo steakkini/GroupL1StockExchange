@@ -100,7 +100,7 @@ public class BrokerPlatformService {
 	private void createTestStock(){
 		stockList = new ArrayList<Stock>();	
         Stock newStock = new Stock();
-        newStock.setName("ANFANG");
+        newStock.setName("CEL11");
         newStock.setCurrency("EUR");
         newStock.setAvailability(5);
         newStock.setPrice(1.0);
@@ -109,6 +109,6 @@ public class BrokerPlatformService {
         
        // System.out.println("SURcTS");
         
-		boolean ret = new CreateStockService().createStock("ANFANG2", "EUR", 10, 10.0, "L1ANF2");
+		boolean ret = new CreateStockService().createStock("CEL12", "EUR", 10, 10.0, "L1ANF2");
 	}
 }

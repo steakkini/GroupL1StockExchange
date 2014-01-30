@@ -415,7 +415,6 @@ public class UddiManager {
 
 			if (security == null || _juddiApi == null || publish == null) {
 				//TODO
-				System.out.println("SUR1");
 				String uddifile = getResource("uddi.xml");//necessary in web context -> uddi.xml needs to be located in WebContent/WEB-INF/classes/META-INF
 //				String uddifile = getAbsoluteFilePath("src/at/jku/ce/juddi/uddi.xml"); //adaption for simple run as Java application
 

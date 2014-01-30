@@ -1,6 +1,7 @@
 package at.jku.ce.brokerplatform.model.bl;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -14,14 +15,21 @@ public class ChangeStockService {
 	private BrokerPlatformService platform;
 	private List<Stock> stockList;
 	
+	public ChangeStockService(){
+		platform = BrokerPlatformService.getInstance();
+		stockList = platform.getStockList();	
+	}
+	
 	public String changeStock(String stockName, String currency, int stockAmount, double stockPrice, String isin){
+		
 		StringBuffer returnValue = new StringBuffer();
 		returnValue.append("Unsuccessful.");
-
-		stockList = platform.getInstance().getStockList();	
 		
-		for(Stock stock : stockList){
-			if(stock.getName() == stockName){
+		for(int i=0;i<stockList.size();i++){
+			returnValue = new StringBuffer();
+			Stock stock = stockList.get(i);
+			
+			if(stock.getName().equals(stockName)){
 				
 				returnValue = new StringBuffer();
 				String regex = "^[a-zA-Z0-9]*$";
@@ -51,7 +59,7 @@ public class ChangeStockService {
 				
 				regex = "\\d+";
 				
-				if(!patternCoverage(regex,String.valueOf(stockAmount))){
+				if(!patternCoverage(regex,String.valueOf(stockAmount)) && String.valueOf(stockAmount) != null ){
 					returnValue.append("Check the availability.\n");
 				}
 				else
@@ -61,7 +69,7 @@ public class ChangeStockService {
 				
 				regex = "C=(\\d+\\.\\d+)";
 		
-				if(!patternCoverage(regex,String.valueOf(stockPrice))){
+				if(!patternCoverage(regex,String.valueOf(stockPrice)) && String.valueOf(stockPrice) != null){
 					returnValue.append("Check the price.\n");
 				}
 				else
@@ -74,18 +82,36 @@ public class ChangeStockService {
 		}
 		return returnValue.toString();
 	}
-	
+	/*
+	public List<String> listAvailableStocks() {
+		List<String> list = new ArrayList<String>();
+		
+		for(Stock stock : stockList){
+			list.add(stock.getName());
+			//System.out.println(stock.getName());
+		}
+		
+		return list;
+	}
+	*/
 	private boolean patternCoverage(String regex, String compareString)
 	{
-		Pattern pattern;
-		pattern = Pattern.compile(regex);
-		if(pattern.matcher(compareString).matches())
-		{
-			return true;
+		try{
+			
+			Pattern pattern;
+			pattern = Pattern.compile(regex);
+			if(pattern.matcher(compareString).matches())
+			{
+				return true;
+			}
+			else
+			{
+		        return false;
+			}
 		}
-		else
+		catch(NullPointerException e)
 		{
-	        return false;
+			return false;
 		}
 	}
 }

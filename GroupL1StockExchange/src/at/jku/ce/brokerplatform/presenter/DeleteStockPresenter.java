@@ -16,12 +16,14 @@ public class DeleteStockPresenter {
 	public DeleteStockPresenter(IDeleteStockView view)
 	{
 		this.view = view;
+		service = new DeleteStockService();
 	}
 	
 	public void deleteStock()
 	{
-		System.out.print(listAvailableStocks());
-		view.setStockList(listAvailableStocks());
+		service = new DeleteStockService();
+		//System.out.print(listAvailableStocks());
+		//view.setStockList(listAvailableStocks());
 		String stockName = view.getStockName();
 		
 		if(service.deleteStock(stockName)){
@@ -31,6 +33,10 @@ public class DeleteStockPresenter {
 			view.displaySuccess("Problem occured.");
 		}
 		
+	}
+	
+	public void listStocks(){
+		view.setStockList(listAvailableStocks());
 	}
 	
 	public List<String> listAvailableStocks(){

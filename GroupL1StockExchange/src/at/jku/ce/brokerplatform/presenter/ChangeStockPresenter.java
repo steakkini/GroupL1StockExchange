@@ -1,5 +1,7 @@
 package at.jku.ce.brokerplatform.presenter;
 
+import java.util.List;
+
 import at.jku.ce.brokerplatform.model.bl.ChangeStockService;
 import at.jku.ce.brokerplatform.view.IChangeStockView;
 
@@ -14,6 +16,7 @@ public class ChangeStockPresenter {
 	public ChangeStockPresenter(IChangeStockView view)
 	{
 		this.view = view;
+		service = new ChangeStockService();
 	}
 	
 	public void changeStock()
@@ -28,8 +31,7 @@ public class ChangeStockPresenter {
 		
 		displayMessage = service.changeStock(stockName,currency,stockAmount,stockPrice,isin);
 		view.displaySuccess(displayMessage);
-
-		
 	}
+	
 
 }

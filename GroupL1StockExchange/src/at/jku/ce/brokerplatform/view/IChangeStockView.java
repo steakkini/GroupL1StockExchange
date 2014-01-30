@@ -1,15 +1,12 @@
 package at.jku.ce.brokerplatform.view;
 
+import java.util.List;
+
 import javax.servlet.ServletRequest;
 
-public interface IChangeStockView extends StockViewable {
-	public String getCurrency();
-	public void setCurrency(String currency);
-	public int getStockAmount();
-	public void setStockAmount(int amount);
-	public double getStockPrice();
-	public void setStockPrice(double price);
-	public String getIsin();
-	public void setIsin(String isin);
+public interface IChangeStockView extends ICreateStockView {
+
+	//public void setStockList(List<String> list); 
+
 
 }

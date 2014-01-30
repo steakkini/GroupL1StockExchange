@@ -14,14 +14,17 @@ public class DeleteStockService {
 	private List<Stock> stockList;
 	
 	public DeleteStockService(){
-		stockList = platform.getInstance().getStockList();	
+		platform = BrokerPlatformService.getInstance();
+		stockList = platform.getStockList();	
 	}
 	public boolean deleteStock(String stockName){
 		boolean returnValue = false;
 		
+		System.out.println("DeleteStock:" + stockName);
+		
 		for(int i=0;i<stockList.size();i++){
 			Stock stock = stockList.get(i);
-			if(stock.getName() == stockName){
+			if(stock.getName().equals(stockName)){
 				stockList.remove(stock);
 				returnValue = true;
 			}
@@ -35,6 +38,7 @@ public class DeleteStockService {
 		
 		for(Stock stock : stockList){
 			list.add(stock.getName());
+			//System.out.println(stock.getName());
 		}
 		
 		return list;

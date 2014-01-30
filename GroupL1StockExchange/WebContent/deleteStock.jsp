@@ -12,19 +12,20 @@
 <title>Delete a Stock</title>
 </head>
 <body>
+<form method ="post">
 	 <%  
-	     DeleteStockPresenter presenter = new DeleteStockPresenter(new DeleteStockView(request));  
+	     DeleteStockPresenter presenter = new DeleteStockPresenter(new DeleteStockView(request)); 
+	 	 presenter.listStocks();
 	     if (request.getMethod().equalsIgnoreCase("post"))  
 	         presenter.deleteStock();  
 	 %>  
-	<form action="deleteStock" method="post">
 		<p>Please select one the stock which should be deleted:</p>
 		<p>
-		<%	
-		   //for (String stock : stockList) {
-			  	out.println("<input type='radio' name='stock' value='TestAktie'/>TestAktie<br/>");
-				//out.println("<input type='radio' name='stock' value='"+stock+"'/>"+stock+"<br/>");
-			//	}
+		<%	String stockName;
+		    for (Iterator<String> i = stockList.iterator(); i.hasNext();) {
+		    	stockName = i.next();
+				out.println("<input type='radio' name='stockName' value='"+stockName+"'/>"+stockName+"<br/>");
+		}
 		%>
 		</p>
         <% if (successLabel != null) { %>  
@@ -32,7 +33,7 @@
         <% } %>  
 		<input type="submit" value="delete">		
 	</form>
-	Go back to the <a href="createStock.jsp">Administration Platform</a>
+	Go back to the <a href="administratePlatform.jsp">Administration Platform</a>
 </body>
 </html>
 

@@ -21,20 +21,20 @@
 		<p>Please insert the fields for the stock:</p>
 		<p>
 		Name:<br>
-		<input type="text" name="nameTextField" value=<%= nameTextField %>></input><br>
+		<input type="text" name="stockName" value=<%= nameTextField %>></input><br>
 		Currency<br>
-		<input type="text" name="currencyTextField" value=<%= currencyTextField %>></input><br>
+		<input type="text" name="currency" value=<%= currencyTextField %>></input><br>
 		Availability:<br>
-		<input type="text" name="stockAmountTextField" value=<%= stockAmountTextField %>></input><br>
+		<input type="text" name="stockAmount" value=<%= stockAmountTextField %>></input><br>
 		Price:<br>
-		<input type="text" name="stockPriceTextField" value=<%= stockPriceTextField %>></input><br>
+		<input type="text" name="stockPrice" value=<%= stockPriceTextField %>></input><br>
 		Isin:<br>
-		<input type="text" name="isinTextField" value=<%= isinTextField %>></input><br>
+		<input type="text" name="isin" value=<%= isinTextField %>></input><br>
 		</p>
         <% if (successLabel != null) { %>  
             <p class="result"><%= successLabel %></p>  
         <% } %>  
-		<input type="submit" value="create">		
+		<input type="submit" value="create"><br>		
 	Go back to the <a href="administratePlatform.jsp">Administration Platform</a>
 
 	 <%! 
