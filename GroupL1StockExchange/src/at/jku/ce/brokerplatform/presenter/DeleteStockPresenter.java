@@ -1,5 +1,7 @@
 package at.jku.ce.brokerplatform.presenter;
 
+import java.util.List;
+
 import at.jku.ce.brokerplatform.model.bl.DeleteStockService;
 import at.jku.ce.brokerplatform.view.IDeleteStockView;
 
@@ -18,6 +20,8 @@ public class DeleteStockPresenter {
 	
 	public void deleteStock()
 	{
+		System.out.print(listAvailableStocks());
+		view.setStockList(listAvailableStocks());
 		String stockName = view.getStockName();
 		
 		if(service.deleteStock(stockName)){
@@ -27,6 +31,10 @@ public class DeleteStockPresenter {
 			view.displaySuccess("Problem occured.");
 		}
 		
+	}
+	
+	public List<String> listAvailableStocks(){
+		return service.listAvailableStocks();
 	}
 
 }

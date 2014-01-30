@@ -2,6 +2,7 @@
     <wb-module deploy-name="GroupL1StockExchange">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
         <property name="java-output-path" value="/GroupL1StockExchange/build/classes"/>
         <property name="context-root" value="GroupL1StockExchange"/>
     </wb-module>

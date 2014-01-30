@@ -18,21 +18,28 @@
 	         presenter.deleteStock();  
 	 %>  
 	<form action="deleteStock" method="post">
-		<p>Please select one of the available stock exchanges:</p>
+		<p>Please select one the stock which should be deleted:</p>
 		<p>
-        <% if (successLabel != null) { %>  
-             <p class="result"><%= successLabel %></p>  
-         <% } %>  
+		<%	
+		   //for (String stock : stockList) {
+			  	out.println("<input type='radio' name='stock' value='TestAktie'/>TestAktie<br/>");
+				//out.println("<input type='radio' name='stock' value='"+stock+"'/>"+stock+"<br/>");
+			//	}
+		%>
 		</p>
-		<input type="submit" value="get stocks">		
+        <% if (successLabel != null) { %>  
+            <p class="result"><%= successLabel %></p>  
+        <% } %>  
+		<input type="submit" value="delete">		
 	</form>
 </body>
 </html>
 
  <%! 
-  	 //Inner class, which plays the view role to provide the MVP pattern.
-	 private String nameTextField;    
-	 private String successLabel;  
+  	 //Inner class, which has the view role to provide the MVP pattern.
+	 protected String nameTextField;    
+ 	 protected String successLabel; 
+ 	 protected List<String> stockList;
 
      private class DeleteStockView implements IDeleteStockView {  
          private ServletRequest request;  
@@ -41,11 +48,16 @@
         	 request = srequest;
          }
          public String getStockName() {  
-             return request.getParameter("x");  
+             return request.getParameter("stockName");  
          }  
          public void setStockName(String value) {  
         	 nameTextField = String.valueOf(value);  
          }  
+         
+         public void setStockList(List<String> list)
+         {
+        	stockList = list;
+         }
  
          public void displaySuccess(String message) {  
              successLabel = message;  

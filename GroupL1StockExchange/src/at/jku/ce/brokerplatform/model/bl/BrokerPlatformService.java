@@ -23,8 +23,15 @@ public class BrokerPlatformService {
 		stockExchange.setMic(MIC);
 		stockExchange.setName(STOCKEXCHANGENAME);
 		
-		registerDirectoryService();
+		if (registerDirectoryService()){
+			System.out.println("UDDI Registrierung erfolgreich.");
+		}
+		else{
+			System.out.println("UDDI Registrierung nicht erfolgreich.");
+		}
+
 		setStockList(new ArrayList<Stock>());
+		createTestStock();
 	}
 	
 	public static BrokerPlatformService getInstance(){
@@ -33,10 +40,14 @@ public class BrokerPlatformService {
 
 	public boolean registerDirectoryService(){
 			UddiManager manager = UddiManager.getInstance();
-			singnOutOfDirectoryService();
+			System.out.println("1.");
+
+			//singnOutOfDirectoryService();
 			try {
 				//Register Group 
-				String serviceKey = manager.publish(BUSINESSNAME, STOCKEXCHANGENAME, "http://140.78.73.101:8080/GroupL2StockExchange/services/ExchangeServicePort?wsdl");
+				System.out.println("2.");
+				String serviceKey = manager.publish(BUSINESSNAME, "Stock Exchange Service", "http://140.78.73.101:8080/GroupL1StockExchange/services/ExchangeServicePort?wsdl");
+				System.out.println("3.");
 				System.out.print(serviceKey);  
 			} catch (ConnectException e) {
 				// TODO Auto-generated catch block
@@ -79,5 +90,10 @@ public class BrokerPlatformService {
 
 	private void setStockList(List<Stock> stockList) {
 		this.stockList = stockList;
+	}
+	
+	private void createTestStock(){
+		stockList = new ArrayList<Stock>();	
+		boolean ret = new CreateStockService().createStock("Testaktie", "EUR", 10, 10.0, "L1LUI1");
 	}
 }
