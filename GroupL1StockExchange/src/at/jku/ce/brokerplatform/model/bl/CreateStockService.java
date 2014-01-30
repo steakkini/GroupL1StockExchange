@@ -14,18 +14,21 @@ import at.jku.ce.stockexchange.service.Stock;
  *
  */
 public class CreateStockService {
-	private BrokerPlatformService platform;
+	//private BrokerPlatformService platform;
 	private List<Stock> stockList;
 	
 	public boolean createStock(String stockName, String currency, int stockAmount, double stockPrice, String isin){
-		boolean returnValue = false;
-		stockList = platform.getInstance().getStockList();	
+		boolean returnValue = true;
+		stockList = BrokerPlatformService.getInstance().getStockList();	
 		
-		for(Stock stock : stockList){
+		for(int i=0;i<stockList.size();i++){
+			Stock stock = stockList.get(i);
 			if(stock.getName() == stockName){
 				returnValue = false;
 			}
-			else
+		}
+		
+		if(returnValue){
 			{
 				Stock newStock = new Stock();
 				
@@ -46,6 +49,10 @@ public class CreateStockService {
 				stockList.add(newStock);
 				returnValue = true;
 			}
+		}
+		else
+		{
+			returnValue = false;
 		}
 		
 		return returnValue;

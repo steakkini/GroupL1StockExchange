@@ -19,7 +19,8 @@ public class DeleteStockService {
 	public boolean deleteStock(String stockName){
 		boolean returnValue = false;
 		
-		for(Stock stock : stockList){
+		for(int i=0;i<stockList.size();i++){
+			Stock stock = stockList.get(i);
 			if(stock.getName() == stockName){
 				stockList.remove(stock);
 				returnValue = true;

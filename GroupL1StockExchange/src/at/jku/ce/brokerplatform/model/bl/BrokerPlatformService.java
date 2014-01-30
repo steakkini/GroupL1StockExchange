@@ -13,11 +13,24 @@ public class BrokerPlatformService {
 	private static final String MIC = "L1CE";
 	private static final String STOCKEXCHANGENAME = "Gruppe L1 Börse";
 	private static final String BUSINESSNAME = "L1";
-	private static final BrokerPlatformService instance = new BrokerPlatformService();
+	private static  BrokerPlatformService instance;// = new BrokerPlatformService();
 	private StockExchange stockExchange;
 	private List<Stock> stockList;
 
 	private BrokerPlatformService(){
+
+	}
+	
+	public static BrokerPlatformService getInstance(){
+		if(instance == null){
+			instance = new BrokerPlatformService();
+			instance.init();
+		}
+		return instance;
+	}
+	
+	private void init()
+	{
 		ObjectFactory factory = new ObjectFactory();
 		stockExchange = factory.createStockExchange();
 		stockExchange.setMic(MIC);
@@ -28,26 +41,18 @@ public class BrokerPlatformService {
 		}
 		else{
 			System.out.println("UDDI Registrierung nicht erfolgreich.");
-		}
+		}  
 
-		setStockList(new ArrayList<Stock>());
 		createTestStock();
-	}
-	
-	public static BrokerPlatformService getInstance(){
-		return instance;
 	}
 
 	public boolean registerDirectoryService(){
 			UddiManager manager = UddiManager.getInstance();
-			System.out.println("1.");
 
-			//singnOutOfDirectoryService();
+			singnOutOfDirectoryService();
 			try {
 				//Register Group 
-				System.out.println("2.");
 				String serviceKey = manager.publish(BUSINESSNAME, "Stock Exchange Service", "http://140.78.73.101:8080/GroupL1StockExchange/services/ExchangeServicePort?wsdl");
-				System.out.println("3.");
 				System.out.print(serviceKey);  
 			} catch (ConnectException e) {
 				// TODO Auto-generated catch block
@@ -94,6 +99,16 @@ public class BrokerPlatformService {
 	
 	private void createTestStock(){
 		stockList = new ArrayList<Stock>();	
-		boolean ret = new CreateStockService().createStock("Testaktie", "EUR", 10, 10.0, "L1LUI1");
+        Stock newStock = new Stock();
+        newStock.setName("ANFANG");
+        newStock.setCurrency("EUR");
+        newStock.setAvailability(5);
+        newStock.setPrice(1.0);
+        newStock.setIsin("L1ANF1");
+        stockList.add(newStock);
+        
+       // System.out.println("SURcTS");
+        
+		boolean ret = new CreateStockService().createStock("ANFANG2", "EUR", 10, 10.0, "L1ANF2");
 	}
 }

@@ -32,6 +32,7 @@
         <% } %>  
 		<input type="submit" value="delete">		
 	</form>
+	Go back to the <a href="createStock.jsp">Administration Platform</a>
 </body>
 </html>
 

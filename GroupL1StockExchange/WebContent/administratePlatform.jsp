@@ -8,7 +8,10 @@
 </head>
 <body>
 	<% out.println("Hello Administrator!"); %>
-	<p/>
-	Click <a href="deleteStock.jsp">here</a> to delete a stock.
+	<p>
+	Click <a href="deleteStock.jsp">here</a> to delete a stock.<br>
+	Click <a href="createStock.jsp">here</a> to create a stock.<br>
+	Click <a href="changeStock.jsp">here</a> to change a stock.<br>
+	</p>
 </body>
 </html>
