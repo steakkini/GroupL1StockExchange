@@ -44,7 +44,7 @@ public class ExchangeServiceImpl implements ExchangeService {
         LOG.info("Executing operation buyStock");
         System.out.println(arg0);
         System.out.println(arg1);
-        try{
+        //try{
         	BrokerPlatformService platform = BrokerPlatformService.getInstance();
             ObjectFactory factory;
         	factory = new ObjectFactory();
@@ -76,14 +76,14 @@ public class ExchangeServiceImpl implements ExchangeService {
             	
         		DBExchangeTransaction transaction = new DBExchangeTransaction();
             	transaction.insertEntry(exchange);
-            	return exchange;
+            	
         	}
-
-        } catch (java.lang.Exception ex) {
+        	return exchange;
+        /*} catch (java.lang.Exception ex) {
             ex.printStackTrace();
             throw new RuntimeException(ex);
         }
-        return null;
+        return null;*/
     }
 
     /* (non-Javadoc)

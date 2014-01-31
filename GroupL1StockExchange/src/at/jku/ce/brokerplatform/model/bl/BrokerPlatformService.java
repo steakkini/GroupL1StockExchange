@@ -101,6 +101,7 @@ public class BrokerPlatformService {
 				return stock;
 			}
 		}
+		System.out.println(name + " not found in stock list");
 		return null;
 	}
 
