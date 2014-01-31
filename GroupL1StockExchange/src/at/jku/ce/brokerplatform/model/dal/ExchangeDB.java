@@ -89,7 +89,7 @@ public class ExchangeDB {
 		this.execution = execution;
 	}
 	public String getExchange_date() {
-		DateFormat df = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return df.format(exchange_date);
 	}
 	public void setExchange_date(Date exchange_date2) {

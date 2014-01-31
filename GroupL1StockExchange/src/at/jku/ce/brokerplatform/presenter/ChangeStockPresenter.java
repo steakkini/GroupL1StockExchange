@@ -1,6 +1,5 @@
 package at.jku.ce.brokerplatform.presenter;
 
-import java.util.List;
 
 import at.jku.ce.brokerplatform.model.bl.ChangeStockService;
 import at.jku.ce.brokerplatform.view.IChangeStockView;

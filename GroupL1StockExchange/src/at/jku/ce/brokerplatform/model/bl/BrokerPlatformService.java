@@ -92,6 +92,17 @@ public class BrokerPlatformService {
 	public List<Stock> getStockList() {
 		return stockList;
 	}
+	
+	public Stock getStockFromList(String name){
+		for(int i=0;i<stockList.size();i++){
+			Stock stock = stockList.get(i);
+			
+			if(stock.getName().equals(name)){
+				return stock;
+			}
+		}
+		return null;
+	}
 
 	private void setStockList(List<Stock> stockList) {
 		this.stockList = stockList;
