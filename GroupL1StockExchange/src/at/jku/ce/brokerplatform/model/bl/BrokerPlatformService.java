@@ -97,7 +97,7 @@ public class BrokerPlatformService {
 		for(int i=0;i<stockList.size();i++){
 			Stock stock = stockList.get(i);
 			
-			if(stock.getName().equals(name)){
+			if(stock.getName().equalsIgnoreCase(name) || stock.getIsin().equalsIgnoreCase(name)){
 				return stock;
 			}
 		}

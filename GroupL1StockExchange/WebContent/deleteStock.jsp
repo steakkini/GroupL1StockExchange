@@ -14,7 +14,7 @@
 <body>
 <form method ="post">
 	 <%  
-	     DeleteStockPresenter presenter = new DeleteStockPresenter(new DeleteStockView(request)); 
+	     LoginPresenter presenter = new DeleteStockPresenter(new DeleteStockView(request)); 
 	 	 presenter.listStocks();
 	     if (request.getMethod().equalsIgnoreCase("post"))  
 	         presenter.deleteStock();  
